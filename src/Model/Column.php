@@ -144,6 +144,7 @@ class Column
      */
     public function setColumnType($columnType)
     {
+        $columnType = strtoupper($columnType);
         $this->columnType = $columnType;
     }
 
@@ -160,6 +161,7 @@ class Column
      */
     public function setDataType($dataType)
     {
+        $dataType = strtoupper($dataType);
         $this->dataType = $dataType;
     }
 
@@ -192,6 +194,7 @@ class Column
      */
     public function setCharacterSet($characterSet)
     {
+        $characterSet = strtolower($characterSet);
         $this->characterSet = $characterSet;
     }
 
@@ -208,6 +211,7 @@ class Column
      */
     public function setCollate($collate)
     {
+        $collate = strtolower($collate);
         $this->collate = $collate;
     }
 
@@ -420,7 +424,7 @@ class Column
 
         if (!$this->nullable) {
             $columnOptions[] = 'NOT NULL';
-        } elseif ($this->columnType == 'timestamp') {
+        } elseif ($this->columnType == 'TIMESTAMP') {
             $columnOptions[] = 'NULL';
         }
 
