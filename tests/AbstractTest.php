@@ -1,6 +1,6 @@
 <?php
 
-namespace Camcima\MySqlDiff;
+namespace solutionDrive\MySqlDiff;
 
 abstract class AbstractTest extends \PHPUnit_Framework_TestCase
 {
