@@ -1,6 +1,6 @@
 <?php
 
-namespace Camcima\MySqlDiff;
+namespace solutionDrive\MySqlDiff;
 
 
 class RegExpPattern
