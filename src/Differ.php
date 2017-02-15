@@ -99,16 +99,6 @@ class Differ
                 $changedTable->addChangedColumn($toColumn);
                 continue;
             }
-
-            if (!$fromColumn->getPreviousColumn() && !$toColumn->getPreviousColumn()) {
-                continue;
-            } elseif (!$fromColumn->getPreviousColumn() && $toColumn->getPreviousColumn() instanceof Column) {
-                $this->addChangedColumn($changedTable, $toColumn);
-            } elseif ($fromColumn->getPreviousColumn() instanceof Column && !$toColumn->getPreviousColumn()) {
-                $this->addChangedColumn($changedTable, $toColumn);
-            } elseif ($fromColumn->getPreviousColumn()->getName() != $toColumn->getPreviousColumn()->getName()) {
-                $this->addChangedColumn($changedTable, $toColumn);
-            }
         }
     }
 
