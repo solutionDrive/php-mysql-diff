@@ -370,6 +370,7 @@ class Table
      */
     public function setDefaultCharset($defaultCharset)
     {
+        $defaultCharset = strtolower($defaultCharset);
         $this->defaultCharset = $defaultCharset;
     }
 
