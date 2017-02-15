@@ -75,7 +75,7 @@ class Differ
         // Determine deleted columns (ignore just renamed, e.g. case changed)
         foreach ($fromTable->getColumns() as $fromColumn) {
             if (!$toTable->hasColumn($fromColumn->getName()) &&
-                !$fromTable->hasColumnCaseInsensitive($toColumn->getName())) {
+                !$fromTable->hasColumnCaseInsensitive($fromColumn->getName())) {
 
                 $changedTable->addDeletedColumn($fromColumn);
             }
@@ -88,7 +88,7 @@ class Differ
                     $changedTable->addNewColumn($toColumn);
                 } else {
                     // Column is not in columns, but in columnsCaseInsensitive, so case of name is changed
-                    $changedTable->addChangedColumn($fromColumn);
+                    $changedTable->addChangedColumn($toColumn);
                 }
                 continue;
             }
