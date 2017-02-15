@@ -1,9 +1,10 @@
 {
-  "name": "camcima/php-mysql-diff",
+  "name": "solutiondrive/php-mysql-diff",
   "type": "project",
-  "homepage": "https://github.com/camcima/php-mysql-diff",
+  "homepage": "https://github.com/solutionDrive/php-mysql-diff",
   "keywords": ["database","diff","mysql","migration","generator","script"],
   "license": "MIT",
+  "description": "This is a fork of camcima/php-mysql-diff",
   "authors": [
     {
       "name": "Carlos Cima",
@@ -20,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Camcima\\MySqlDiff\\": "src/"
+      "solutionDrive\\MySqlDiff\\": "src/"
     }
   },
   "bin": ["php-mysql-diff"]
