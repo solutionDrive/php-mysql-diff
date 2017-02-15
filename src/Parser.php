@@ -1,13 +1,13 @@
 <?php
 
-namespace Camcima\MySqlDiff;
+namespace solutionDrive\MySqlDiff;
 
-use Camcima\MySqlDiff\Model\Column;
-use Camcima\MySqlDiff\Model\Database;
-use Camcima\MySqlDiff\Model\ForeignKey;
-use Camcima\MySqlDiff\Model\Index;
-use Camcima\MySqlDiff\Model\IndexColumn;
-use Camcima\MySqlDiff\Model\Table;
+use solutionDrive\MySqlDiff\Model\Column;
+use solutionDrive\MySqlDiff\Model\Database;
+use solutionDrive\MySqlDiff\Model\ForeignKey;
+use solutionDrive\MySqlDiff\Model\Index;
+use solutionDrive\MySqlDiff\Model\IndexColumn;
+use solutionDrive\MySqlDiff\Model\Table;
 
 class Parser
 {

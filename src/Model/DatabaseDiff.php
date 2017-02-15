@@ -1,6 +1,6 @@
 <?php
 
-namespace Camcima\MySqlDiff\Model;
+namespace solutionDrive\MySqlDiff\Model;
 
 class DatabaseDiff
 {

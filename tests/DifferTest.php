@@ -1,8 +1,8 @@
 <?php
 
-namespace Camcima\MySqlDiff;
+namespace solutionDrive\MySqlDiff;
 
-use Camcima\MySqlDiff\Model\DatabaseDiff;
+use solutionDrive\MySqlDiff\Model\DatabaseDiff;
 
 class DifferTest extends AbstractTest
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Camcima\MySqlDiff\Model;
+namespace solutionDrive\MySqlDiff\Model;
 
 class Table
 {
@@ -28,6 +28,11 @@ class Table
      * @var Column[]
      */
     private $columns = [];
+
+    /**
+     * @var Column[]
+     */
+    private $columnsCaseInsensitive = [];
 
     /**
      * @var Column[]
@@ -151,6 +156,7 @@ class Table
     {
         $column->setParentTable($this);
         $this->columns[$column->getName()] = $column;
+        $this->columnsCaseInsensitive[strtoupper($column->getName())] = $column;
     }
 
     /**
@@ -165,6 +171,22 @@ class Table
         }
 
         return $this->columns[$columnName];
+    }
+
+    /**
+     * sdFIX: Check if column exists case-insensitively.
+     * @param string $columnName
+     *
+     * @return Column
+     */
+    public function getColumnByNameCaseInsensitive($columnName)
+    {
+        $columnName = strtoupper($columnName);
+        if (!isset($this->columnsCaseInsensitive[$columnName])) {
+            throw new \RuntimeException(sprintf('Column "%s" not found in table ""!', $columnName, $this->name));
+        }
+
+        return $this->columnsCaseInsensitive[$columnName];
     }
 
     /**
@@ -191,6 +213,18 @@ class Table
     public function hasColumn($columnName)
     {
         return isset($this->columns[$columnName]);
+    }
+
+    /**
+     * sdFIX: Check if column exists case-insensitively.
+     * @param string $columnName
+     *
+     * @return bool
+     */
+    public function hasColumnCaseInsensitive($columnName)
+    {
+        $columnName = strtoupper($columnName);
+        return isset($this->columnsCaseInsensitive[$columnName]);
     }
 
     /**

@@ -1,11 +1,11 @@
 <?php
 
-namespace Camcima\MySqlDiff;
+namespace solutionDrive\MySqlDiff;
 
-use Camcima\MySqlDiff\Model\ChangedTable;
-use Camcima\MySqlDiff\Model\Column;
-use Camcima\MySqlDiff\Model\Database;
-use Camcima\MySqlDiff\Model\DatabaseDiff;
+use solutionDrive\MySqlDiff\Model\ChangedTable;
+use solutionDrive\MySqlDiff\Model\Column;
+use solutionDrive\MySqlDiff\Model\Database;
+use solutionDrive\MySqlDiff\Model\DatabaseDiff;
 
 class Differ
 {
@@ -72,18 +72,24 @@ class Differ
         $fromTable = $changedTable->getFromTable();
         $toTable = $changedTable->getToTable();
 
-        // Determine deleted columns
+        // Determine deleted columns (ignore just renamed, e.g. case changed)
         foreach ($fromTable->getColumns() as $fromColumn) {
-            if (!$toTable->hasColumn($fromColumn->getName())) {
+            if (!$toTable->hasColumn($fromColumn->getName()) &&
+                !$fromTable->hasColumnCaseInsensitive($toColumn->getName())) {
+
                 $changedTable->addDeletedColumn($fromColumn);
             }
         }
 
         foreach ($toTable->getColumns() as $toColumn) {
-
-            // Determine new columns
+            // Determine new columns and columns with changed case
             if (!$fromTable->hasColumn($toColumn->getName())) {
-                $changedTable->addNewColumn($toColumn);
+                if (!$fromTable->hasColumnCaseInsensitive($toColumn->getName())) {
+                    $changedTable->addNewColumn($toColumn);
+                } else {
+                    // Column is not in columns, but in columnsCaseInsensitive, so case of name is changed
+                    $changedTable->addChangedColumn($fromColumn);
+                }
                 continue;
             }
 
