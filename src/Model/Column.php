@@ -144,7 +144,6 @@ class Column
      */
     public function setColumnType($columnType)
     {
-        $columnType = strtoupper($columnType);
         $this->columnType = $columnType;
     }
 
@@ -161,7 +160,6 @@ class Column
      */
     public function setDataType($dataType)
     {
-        $dataType = strtoupper($dataType);
         $this->dataType = $dataType;
     }
 
